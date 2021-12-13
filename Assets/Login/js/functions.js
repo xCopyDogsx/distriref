@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', function(){
 						var objData = JSON.parse(request.responseText);
 						if(objData.status)
 						{
-							window.location.reload(true);
+							window.location=base_url+'dashboard';
+						
 						}else{
 							swal("Atención", objData.msg, "error");
 							document.querySelector('#password').value = "";
