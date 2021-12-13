@@ -29,8 +29,8 @@
 			//BUSCAR ROLES 
 			$sql = "SELECT p.Per_ID,
 							
-							p.Per_Nom,
-							p.Per_Ape,
+							p.Per_Nombre,
+							p.Per_Apellidos,
 						
 							p.Per_Email,
 							r.Rol_ID,r.Rol_Nom,
@@ -46,7 +46,7 @@
 
 		public function getUserEmail(string $strEmail){
 			$this->strUsuario = $strEmail;
-			$sql = "SELECT Per_ID,Per_Nom,Per_Ape,Per_Status FROM persona WHERE 
+			$sql = "SELECT Per_ID,Per_Nombre,Per_Apellidos,Per_Status FROM persona WHERE 
 					Per_Email = '$this->strUsuario' and  
 					Per_Status = 1 ";
 			$request = $this->select($sql);
