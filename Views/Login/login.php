@@ -9,24 +9,13 @@ if(!isset($_SESSION['access_token']))
     $login_button = '';
     if(isset($_GET["code"]))
     {
-    
      $token = $google_client->fetchAccessTokenWithAuthCode($_GET["code"]);
-    
-    
      if(!isset($token['error']))
      {
-     
       $google_client->setAccessToken($token['access_token']);
-    
-     
       $_SESSION['access_token'] = $token['access_token'];
-    
-    
       $google_service = new Google_Service_Oauth2($google_client);
-    
-     
       $data = $google_service->userinfo->get();
-
     }
 }
  $login_button = '<a href="'.$google_client->createAuthUrl().'" class="login100-social-item">
@@ -64,27 +53,25 @@ if(!isset($_SESSION['access_token']))
 <!--===============================================================================================-->
 </head>
 <body>
-	
-	
 	<div class="container-login100" style="background-image: url('<?=MEDIA_URL?>login/images/bg.jpg');">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
-			<form class="login100-form validate-form">
-				<span class="login100-form-title p-b-37">
+			<form class="login100-form validate-form" id="formLogin" name="formLogin">
+				<span class="login100-form-title p-b-37" >
 					Inicia sesión
 				</span>
 
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Ingresa un correo valido">
-					<input class="input100" type="text" name="username" placeholder="Email">
+					<input class="input100" type="text" name="username" id="username" placeholder="Email">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input m-b-25" data-validate = "Ingresa la contraseña">
-					<input class="input100" type="password" name="pass" placeholder="Contraseña">
+					<input class="input100" type="password" name="password" id="password" placeholder="Contraseña">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="container-login100-form-btn">
-					<button class="login100-form-btn">
+					<button class="login100-form-btn" type="submit">
 						Ingresar
 					</button>
 				</div>
@@ -113,7 +100,9 @@ if(!isset($_SESSION['access_token']))
 	
 
 	<div id="dropDownSelect1"></div>
-	
+	<script>
+        const base_url = "<?= base_url(); ?>";
+    </script>
 <!--===============================================================================================-->
 	<script src="<?=MEDIA_URL?>login/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -130,7 +119,8 @@ if(!isset($_SESSION['access_token']))
 	<script src="<?=MEDIA_URL?>login/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="<?=MEDIA_URL?>login/js/main.js"></script>
-
+	<script src="<?=MEDIA_URL?>Basic/js/sweetalert.js"></script>
+	<script src="<?=MEDIA_URL?>login/js/functions.js"></script>
 </body>
 </html>
 

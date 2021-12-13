@@ -77,7 +77,15 @@
                             <a class="nav-link page-scroll" href="#download">Download</a>
                         </li>
                         <li>
+                            <?php if(empty($_SESSION)){
+                                ?>
                             <a class="nav-link page-scroll" href="<?=BASE_URL?>login">Iniciar sesión</a>
+                            <?php 	}else{
+
+                            
+                                ?>
+                                <a class="nav-link page-scroll" href="<?=BASE_URL?>logout">Salir</a> 
+                                <?php 	} ?>
                         </li>
                     </ul>
                        
